@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+	 http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- <context:annotation-config />
+	<context:component-scan base-package="com.af.prud" /> -->
+
+	<cxf:cxfEndpoint id="serviceEndpoint"
+		address="http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso"
+		wsdlURL="http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?wsdl"
+		serviceClass="org.oorsprong.websamples_countryinfo.CountryInfoServiceSoapType"
+		endpointName="ws:CountryInfoServiceSoap"
+		serviceName="ws:CountryInfoService"
+
+		xmlns:ws="http://www.oorsprong.org/websamples.countryinfo">
+		<cxf:properties>
+			<entry key="dataFormat" value="MESSAGE" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+
+	<camelContext id="camel"
+		xmlns="http://camel.apache.org/schema/spring">
+		<routeBuilder ref="eposToILRouteBuilder" />
+	</camelContext>
+
+	<bean class="com.af.prud.router.MyRoute" id="eposToILRouteBuilder" />
+	<bean class="com.af.prud.processor.SoapResponseProcessor"
+		id="soapResponseProcessor" />
+
+</beans>
