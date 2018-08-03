@@ -6,11 +6,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import org.springframework.stereotype.Component;
+
 import com.af.prud.mapper.epostoil.CreateClientMapper;
 import com.af.prud.model.epos.Assured;
 import com.af.prud.model.il.CLICRPIREC;
 
-
+@Component
 public class EposToILTranslator {
 	static CreateClientMapper clientMapper = new CreateClientMapper();
 
@@ -50,7 +52,7 @@ public class EposToILTranslator {
 	}
 
 	private void stubEnvelop(String s) {
-		
+
 	}
 
 	public static void main(String[] args) {
