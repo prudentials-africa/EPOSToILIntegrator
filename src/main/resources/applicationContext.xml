@@ -11,7 +11,7 @@
 	<!-- <context:annotation-config />
 	<context:component-scan base-package="com.af.prud" /> -->
 
-	<cxf:cxfEndpoint id="serviceEndpoint"
+	<cxf:cxfEndpoint id="testServiceEndpoint"
 		address="http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso"
 		wsdlURL="http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?wsdl"
 		serviceClass="org.oorsprong.websamples_countryinfo.CountryInfoServiceSoapType"
@@ -19,6 +19,19 @@
 		serviceName="ws:CountryInfoService"
 
 		xmlns:ws="http://www.oorsprong.org/websamples.countryinfo">
+		<cxf:properties>
+			<entry key="dataFormat" value="MESSAGE" />
+		</cxf:properties>
+	</cxf:cxfEndpoint>
+	
+	<cxf:cxfEndpoint id="clientServiceEndpoint"
+		address="http://10.163.177.100:9081/FSUWebSrv/CLIService"
+		wsdlURL="http://10.163.177.100:9081/FSUWebSrv/CLIService/WEB-INF/wsdl/CLIService.wsdl"
+		endpointName="ws:CLIServicePort"
+		serviceClass="smart.csc.bo.services.cli.CLI"
+		serviceName="ws:CLIService"
+
+		xmlns:ws="http://www.csc.smart/bo/services/CLI">
 		<cxf:properties>
 			<entry key="dataFormat" value="MESSAGE" />
 		</cxf:properties>

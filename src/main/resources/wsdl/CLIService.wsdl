@@ -1,0 +1,205 @@
+<wsdl:definitions name="CLIService.wsdl" targetNamespace="http://www.csc.smart/bo/services/CLI" xmlns:m3rq="http://www.csc.smart/bo/schemas/CLICRCI" xmlns:m5rs="http://www.csc.smart/bo/schemas/CLICRTCO" xmlns:m3rs="http://www.csc.smart/bo/schemas/CLICRCO" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:m6rq="http://www.csc.smart/bo/schemas/CLICRTPI" xmlns:m6rs="http://www.csc.smart/bo/schemas/CLICRTPO" xmlns:m8rs="http://www.csc.smart/bo/schemas/CLIUPCO" xmlns:m8rq="http://www.csc.smart/bo/schemas/CLIUPCI" xmlns:m5rq="http://www.csc.smart/bo/schemas/CLICRTCI" xmlns:m9rq="http://www.csc.smart/bo/schemas/CLIUPPI" xmlns:m4rq="http://www.csc.smart/bo/schemas/CLICRPI" xmlns:tns="http://www.csc.smart/bo/services/CLI" xmlns:m9rs="http://www.csc.smart/bo/schemas/CLIUPPO" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m7rq="http://www.csc.smart/bo/schemas/CLIENQI" xmlns:m1rs="http://www.csc.smart/bo/schemas/CLIALIO" xmlns:m7rs="http://www.csc.smart/bo/schemas/CLIENQO" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:m2rq="http://www.csc.smart/bo/schemas/CLIALTCRTI" xmlns:m1rq="http://www.csc.smart/bo/schemas/CLIALII" xmlns:m2rs="http://www.csc.smart/bo/schemas/CLIALTCRTO" xmlns:m4rs="http://www.csc.smart/bo/schemas/CLICRPO">
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://www.csc.smart/bo/services/CLI">
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIALII" schemaLocation="CLIALIISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIALIO" schemaLocation="CLIALIOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIALTCRTI" schemaLocation="CLIALTCRTISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIALTCRTO" schemaLocation="CLIALTCRTOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRCI" schemaLocation="CLICRCISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRCO" schemaLocation="CLICRCOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRPI" schemaLocation="CLICRPISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRPO" schemaLocation="CLICRPOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRTCI" schemaLocation="CLICRTCISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRTCO" schemaLocation="CLICRTCOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRTPI" schemaLocation="CLICRTPISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLICRTPO" schemaLocation="CLICRTPOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIENQI" schemaLocation="CLIENQISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIENQO" schemaLocation="CLIENQOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIUPCI" schemaLocation="CLIUPCISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIUPCO" schemaLocation="CLIUPCOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIUPPI" schemaLocation="CLIUPPISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/CLIUPPO" schemaLocation="CLIUPPOSchema.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="CLICRPResponse">
+      <wsdl:part name="CLICRPRS" element="m4rs:CLICRPO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIUPPRequest">
+      <wsdl:part name="CLIUPPRQ" element="m9rq:CLIUPPI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIENQResponse">
+      <wsdl:part name="CLIENQRS" element="m7rs:CLIENQO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIUPCResponse">
+      <wsdl:part name="CLIUPCRS" element="m8rs:CLIUPCO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRTCResponse">
+      <wsdl:part name="CLICRTCRS" element="m5rs:CLICRTCO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIALIRequest">
+      <wsdl:part name="CLIALIRQ" element="m1rq:CLIALII_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIALTCRTResponse">
+      <wsdl:part name="CLIALTCRTRS" element="m2rs:CLIALTCRTO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRPRequest">
+      <wsdl:part name="CLICRPRQ" element="m4rq:CLICRPI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRCRequest">
+      <wsdl:part name="CLICRCRQ" element="m3rq:CLICRCI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRCResponse">
+      <wsdl:part name="CLICRCRS" element="m3rs:CLICRCO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIUPCRequest">
+      <wsdl:part name="CLIUPCRQ" element="m8rq:CLIUPCI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIENQRequest">
+      <wsdl:part name="CLIENQRQ" element="m7rq:CLIENQI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIUPPResponse">
+      <wsdl:part name="CLIUPPRS" element="m9rs:CLIUPPO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRTCRequest">
+      <wsdl:part name="CLICRTCRQ" element="m5rq:CLICRTCI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRTPResponse">
+      <wsdl:part name="CLICRTPRS" element="m6rs:CLICRTPO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIALTCRTRequest">
+      <wsdl:part name="CLIALTCRTRQ" element="m2rq:CLIALTCRTI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLICRTPRequest">
+      <wsdl:part name="CLICRTPRQ" element="m6rq:CLICRTPI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="CLIALIResponse">
+      <wsdl:part name="CLIALIRS" element="m1rs:CLIALIO_REC"/>
+   </wsdl:message>
+   <wsdl:portType name="CLI">
+      <wsdl:operation name="CLIALI">
+         <wsdl:input message="tns:CLIALIRequest"/>
+         <wsdl:output message="tns:CLIALIResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLIALTCRT">
+         <wsdl:input message="tns:CLIALTCRTRequest"/>
+         <wsdl:output message="tns:CLIALTCRTResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRC">
+         <wsdl:input message="tns:CLICRCRequest"/>
+         <wsdl:output message="tns:CLICRCResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRP">
+         <wsdl:input message="tns:CLICRPRequest"/>
+         <wsdl:output message="tns:CLICRPResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRTC">
+         <wsdl:input message="tns:CLICRTCRequest"/>
+         <wsdl:output message="tns:CLICRTCResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRTP">
+         <wsdl:input message="tns:CLICRTPRequest"/>
+         <wsdl:output message="tns:CLICRTPResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLIENQ">
+         <wsdl:input message="tns:CLIENQRequest"/>
+         <wsdl:output message="tns:CLIENQResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLIUPC">
+         <wsdl:input message="tns:CLIUPCRequest"/>
+         <wsdl:output message="tns:CLIUPCResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="CLIUPP">
+         <wsdl:input message="tns:CLIUPPRequest"/>
+         <wsdl:output message="tns:CLIUPPResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="CLIBinding" type="tns:CLI">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="CLIALI">
+         <soap:operation soapAction="CLIALIAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLIALTCRT">
+         <soap:operation soapAction="CLIALTCRTAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRC">
+         <soap:operation soapAction="CLICRCAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRP">
+         <soap:operation soapAction="CLICRPAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRTC">
+         <soap:operation soapAction="CLICRTCAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLICRTP">
+         <soap:operation soapAction="CLICRTPAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLIENQ">
+         <soap:operation soapAction="CLIENQAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLIUPC">
+         <soap:operation soapAction="CLIUPCAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="CLIUPP">
+         <soap:operation soapAction="CLIUPPAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="CLIService">
+      <wsdl:port name="CLIServicePort" binding="tns:CLIBinding">
+         <soap:address location="http://10.163.177.100:9081/FSUWebSrv/CLIService"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
