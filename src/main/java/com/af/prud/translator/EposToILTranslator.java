@@ -6,10 +6,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import com.af.prud.constant.EposToILConstants;
 import com.af.prud.mapper.epostoil.CreateClientMapper;
 import com.af.prud.model.epos.Assured;
 import com.af.prud.model.il.CLICRPIREC;
-
 
 public class EposToILTranslator {
 	static CreateClientMapper clientMapper = new CreateClientMapper();
@@ -44,20 +44,11 @@ public class EposToILTranslator {
 		Assured assured = jsonToObjectConvertor.createObjectFromJson("assured", json);
 		// clientMapper.createClientFromJson(assured);
 		String s = EposToILTranslator.jaxbObjectToXML(clientMapper.createClientFromJson(assured));
-		stubEnvelop(s);
-		return null;
-
+		return stubEnvelop(s);
 	}
 
-	private void stubEnvelop(String s) {
-		
-	}
-
-	public static void main(String[] args) {
-		JsonToObjectConvertor jsonToObjectConvertor = new JsonToObjectConvertor();
-		Assured assured = jsonToObjectConvertor.createObjectFromJson("assured", "jsonString");
-		// clientMapper.createClientFromJson(assured);
-		String xmlString = EposToILTranslator.jaxbObjectToXML(clientMapper.createClientFromJson(assured));
-		System.out.println("-----------------------------------------MAIN-----------" + xmlString);
+	private String stubEnvelop(String body) {
+		return new StringBuilder(EposToILConstants.SOAPENVELOP_HEADER)
+				.append(body).append(EposToILConstants.SOAPENVELOP_FOOTER).toString();
 	}
 }
