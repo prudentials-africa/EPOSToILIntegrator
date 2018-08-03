@@ -7,10 +7,13 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import com.af.prud.constant.EposToILConstants;
+import org.springframework.stereotype.Component;
+
 import com.af.prud.mapper.epostoil.CreateClientMapper;
 import com.af.prud.model.epos.Assured;
 import com.af.prud.model.il.CLICRPIREC;
 
+@Component
 public class EposToILTranslator {
 	static CreateClientMapper clientMapper = new CreateClientMapper();
 
@@ -46,7 +49,6 @@ public class EposToILTranslator {
 		String s = EposToILTranslator.jaxbObjectToXML(clientMapper.createClientFromJson(assured));
 		return stubEnvelop(s);
 	}
-
 	private String stubEnvelop(String body) {
 		return new StringBuilder(EposToILConstants.SOAPENVELOP_HEADER)
 				.append(body).append(EposToILConstants.SOAPENVELOP_FOOTER).toString();
