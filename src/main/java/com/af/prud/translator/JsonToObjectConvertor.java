@@ -8,9 +8,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.af.prud.mapper.epostoil.CreateClientMapper;
+import com.af.prud.model.epos.Assured;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.prud.epos.json.classes.Assured;
-import com.prud.mappers.CreateClientMapper;
 
 public class JsonToObjectConvertor {
 

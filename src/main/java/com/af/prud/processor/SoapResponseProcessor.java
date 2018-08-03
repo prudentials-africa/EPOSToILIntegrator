@@ -2,9 +2,8 @@ package com.af.prud.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.prud.translators.EposToILTranslator;
+import com.af.prud.translator.EposToILTranslator;
 
 public class SoapResponseProcessor implements Processor {
 	public String clientCreateRequestPayload;

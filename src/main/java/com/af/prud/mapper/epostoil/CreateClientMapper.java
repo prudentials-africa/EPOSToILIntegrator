@@ -1,9 +1,9 @@
 package com.af.prud.mapper.epostoil;
 
-import com.prud.epos.json.classes.AdditionalPersonalInformation;
-import com.prud.epos.json.classes.Assured;
-import com.prud.epos.json.classes.Name;
-import com.prud.il.xml.classes.CLICRPIREC;
+import com.af.prud.model.epos.AdditionalPersonalInformation;
+import com.af.prud.model.epos.Assured;
+import com.af.prud.model.epos.Name;
+import com.af.prud.model.il.CLICRPIREC;
 
 public class CreateClientMapper {
 

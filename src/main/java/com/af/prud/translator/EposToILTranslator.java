@@ -6,9 +6,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.prud.epos.json.classes.Assured;
-import com.prud.il.xml.classes.CLICRPIREC;
-import com.prud.mappers.CreateClientMapper;
+import com.af.prud.mapper.epostoil.CreateClientMapper;
+import com.af.prud.model.epos.Assured;
+import com.af.prud.model.il.CLICRPIREC;
+
 
 public class EposToILTranslator {
 	static CreateClientMapper clientMapper = new CreateClientMapper();
