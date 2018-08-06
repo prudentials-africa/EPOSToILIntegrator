@@ -14,7 +14,7 @@ import javax.xml.transform.stream.StreamSource;
 public class XSLTransformer {
 	public String transform(String xslFileName, String source) {
 		String result = null;
-		String xslFile = getClass().getResource(xslFileName).getFile();
+		String xslFile = getClass().getResource("xsl/"+xslFileName).getFile();
 		try (StringReader reader = new StringReader(source); StringWriter writer = new StringWriter()) {
 
 			StreamSource xslCode = new StreamSource(new File(xslFile));
