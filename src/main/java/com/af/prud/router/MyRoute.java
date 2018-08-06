@@ -19,9 +19,7 @@ public class MyRoute extends RouteBuilder {
 				.setBody(constant(EposToILConstants.body))
 				.log("${body}").to(EposToILConstants.URL_COUNTRY_NAME)
 				.to(EposToILConstants.SOAP_RESPONSE_PROCESSOR).log("ivoked soap service").to("log:output");*/
-		
-		from("cxfrs:bean:rsServer")
-		.process(new ILRequesProcessor())
+		from(EposToILConstants.INPUT_LOCATION)
 		.setHeader(CxfConstants.OPERATION_NAME, constant("CLICRP"))
 		.setHeader(CxfConstants.OPERATION_NAMESPACE,constant("http://www.csc.smart/bo/services/CLI"))
 		.to(EposToILConstants.SOAP_RESPONSE_PROCESSOR)

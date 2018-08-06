@@ -11,17 +11,18 @@ import javax.xml.bind.Marshaller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.af.prud.mapper.epostoil.CreateClientMapper;
 import com.af.prud.mapper.epostoil.OrikaModelMapper;
 import com.af.prud.mapper.epostoil.XSLTransformer;
 import com.af.prud.model.epos.Assured;
 import com.af.prud.model.il.CLICRPIREC;
+import com.af.prud.model.il.MSPContext;
+import com.af.prud.model.il.RequestParameter;
+import com.af.prud.model.il.RequestParameters;
 
 @Component
 public class EposToILTranslator {
 	@Autowired
 	private XSLTransformer xslTransformer;
-	static CreateClientMapper clientMapper = new CreateClientMapper();
 	@Autowired
 	private OrikaModelMapper orikaModelConverter;
 	@Resource(name = "eposToILMappingProperty")
@@ -57,7 +58,16 @@ public class EposToILTranslator {
 		Assured assured = jsonToObjectConvertor.createObjectFromJson("assured", json);
 		CLICRPIREC clientCreate = (CLICRPIREC) orikaModelConverter.map(assured, Assured.class, CLICRPIREC.class,
 				eposToILProperties);
-		// clientMapper.createClientFromJson(assured);
+		MSPContext mspContext = new MSPContext();
+		mspContext.setUserId("LD8ACC1");
+		mspContext.setUserPassword("q1w2e3r4");
+		RequestParameters reqParas = new RequestParameters();
+		RequestParameter reqPara = new RequestParameter();
+		reqPara.setName("COMPANY");
+		reqPara.setValue("U");
+		reqParas.getRequestParameter().add(reqPara);
+		mspContext.setRequestParameters(reqParas);
+		clientCreate.setMSPContext(mspContext);
 		String s = EposToILTranslator.jaxbObjectToXML(clientCreate);
 		return stubEnvelop(s);
 	}

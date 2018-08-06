@@ -9,19 +9,6 @@
 			<soapenv:Header />
 			<soapenv:Body>
 				<xsl:apply-templates />
-				<ADDRTYPE>R</ADDRTYPE>
-				<CLTADDR02></CLTADDR02>
-				<CLTADDR03></CLTADDR03>
-				<CLTADDR04></CLTADDR04>
-				<CLTADDR05></CLTADDR05>
-				<CLTPHONE02></CLTPHONE02>
-				<DIRMAIL></DIRMAIL>
-				<DOCNO></DOCNO>
-				<MAILING></MAILING>
-				<SECUITYNO></SECUITYNO>
-				<SOE></SOE>
-				<STATCODE></STATCODE>
-				<VIP></VIP>
 			</soapenv:Body>
 		</soapenv:Envelope>
 	</xsl:template>
@@ -36,5 +23,21 @@
 		<MM>
 			<xsl:value-of select="format-number(.,'00')"></xsl:value-of>
 		</MM>
+	</xsl:template>
+	<xsl:template match="SALUTL">
+		<xsl:copy-of select="." />
+		<ADDRTYPE>R</ADDRTYPE>
+		<CLTADDR02></CLTADDR02>
+		<CLTADDR03></CLTADDR03>
+		<CLTADDR04></CLTADDR04>
+		<CLTADDR05></CLTADDR05>
+		<CLTPHONE02></CLTPHONE02>
+		<DIRMAIL></DIRMAIL>
+		<DOCNO></DOCNO>
+		<MAILING></MAILING>
+		<SECUITYNO></SECUITYNO>
+		<SOE></SOE>
+		<STATCODE></STATCODE>
+		<VIP></VIP>
 	</xsl:template>
 </xsl:stylesheet>

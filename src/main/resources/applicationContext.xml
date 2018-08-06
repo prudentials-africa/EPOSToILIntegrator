@@ -37,8 +37,8 @@
 		</cxf:properties>
 	</cxf:cxfEndpoint>
 	
-	<cxf:rsServer id="rsServer" address="http://localhost:8081/IL"
-              serviceClass="com.af.prud.controller.ILRequesGeneratorController"/>
+<!-- 	<cxf:rsServer id="rsServer" address="/IL"
+              serviceClass="com.af.prud.controller.ILRequesGeneratorController"/> -->
 
 	<camelContext id="camel"
 		xmlns="http://camel.apache.org/schema/spring">
@@ -48,5 +48,6 @@
 	<bean class="com.af.prud.router.MyRoute" id="eposToILRouteBuilder" />
 	<bean class="com.af.prud.processor.SoapResponseProcessor"
 		id="soapResponseProcessor" />
+	<bean id="restProcessor" class="com.af.prud.processor.ILRequesProcessor" />
 
 </beans>
