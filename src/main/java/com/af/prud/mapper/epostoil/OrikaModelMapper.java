@@ -4,8 +4,11 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.af.prud.model.il.CLICRPIREC;
+
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.converter.ConverterFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import ma.glasnost.orika.metadata.ClassMapBuilder;
 
@@ -18,9 +21,10 @@ public class OrikaModelMapper implements ModelMapper {
 
 	private MapperFacade mapper;
 	MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
-
+	ConverterFactory converterFactory = mapperFactory.getConverterFactory();
+	
 	public OrikaModelMapper() {
-		
+		converterFactory.registerConverter("createClientIdValue", new CreateClientCustomConverter());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -32,7 +36,7 @@ public class OrikaModelMapper implements ModelMapper {
 				classMapBilder.field(s.getKey(),s.getValue());
 			}
 		}
-		classMapBilder.byDefault().register();
+		classMapBilder.fieldMap("dateOfBirth","CLTDOBX").converter("createClientIdValue").add().byDefault().register();
 		mapper = mapperFactory.getMapperFacade();
 		return mapper.map(source, targetClass);
 	}

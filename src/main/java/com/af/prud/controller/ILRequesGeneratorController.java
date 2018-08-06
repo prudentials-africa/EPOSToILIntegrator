@@ -13,15 +13,15 @@ import com.af.prud.service.ILServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class IlRequesGeneratorController {
+public class ILRequesGeneratorController {
 	@Autowired
 	private ILServiceImpl ilServiceImpl;
 	
 
 	@RequestMapping(value = "/IL", method = RequestMethod.POST)
 	@ResponseBody
-	public void createILRequest(@RequestBody String json) {
+	public String createILRequest(@RequestBody String json) {
 		System.out.println(json);
-		ilServiceImpl.serviceRequest(json);
+		return ilServiceImpl.serviceRequest(json);
 	}
 }

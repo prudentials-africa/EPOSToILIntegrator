@@ -36,6 +36,9 @@
 			<entry key="dataFormat" value="MESSAGE" />
 		</cxf:properties>
 	</cxf:cxfEndpoint>
+	
+	<cxf:rsServer id="rsServer" address="http://localhost:8081/IL"
+              serviceClass="com.af.prud.controller.ILRequesGeneratorController"/>
 
 	<camelContext id="camel"
 		xmlns="http://camel.apache.org/schema/spring">
