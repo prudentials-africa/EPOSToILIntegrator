@@ -23,7 +23,7 @@ public class MyRoute extends RouteBuilder {
 		.setHeader(CxfConstants.OPERATION_NAMESPACE,constant("http://www.csc.smart/bo/services/CLI"))
 		.to(EposToILConstants.SOAP_RESPONSE_PROCESSOR)
 		.setBody(constant(""))
-		.log("input payload ${CREATE_CLIENT_BODY}").to("cxf:bean:clientServiceEndpoint?defaultOperationName=CLICRP")
+		.log("input payload").to("cxf:bean:clientServiceEndpoint?defaultOperationName=CLICRP")
 		.log("ivoked soap service").to("log:output");
 	}
 

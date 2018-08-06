@@ -24,8 +24,9 @@ public class JsonToObjectConvertor {
 		Assured assured = null;
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			fileReader = new FileReader("input.json");
-			json = (JSONObject) parser.parse(fileReader);
+//			fileReader = new FileReader("input.json");
+//			json = (JSONObject) parser.parse(fileReader);
+			json = (JSONObject) parser.parse(eposJson);
 			assured = mapper.readValue(json.get(name).toString(), Assured.class);
 
 		} catch (FileNotFoundException e) {
@@ -45,36 +46,5 @@ public class JsonToObjectConvertor {
 		// Assured p1 = (Assured) json.get("assured");
 		// System.out.println(p1);
 		return assured;
-	}
-
-	public static void main(String[] args) throws Exception {
-		JSONParser parser = new JSONParser();
-
-		// Object obj = parser.parse(new FileReader("input.json"));
-		FileReader fileReader = new FileReader("input.json");
-		JSONObject json = (JSONObject) parser.parse(fileReader);
-		// JSONObject data = (JSONObject) parser.parse(new FileReader());
-
-		// String name = (String) jsonObject.get("name");
-		System.out.println(json.toJSONString());
-		// Assured p1 = (Assured) json.get("assured");
-		// System.out.println(p1);
-
-		ObjectMapper mapper = new ObjectMapper();
-
-		Assured p = mapper.readValue(json.get("assured").toString(), Assured.class);
-		System.out.println(p);
-		CreateClientMapper c = new CreateClientMapper();
-		EposToILTranslator e = new EposToILTranslator();
-		e.jaxbObjectToXML(c.createClientFromJson(p));
-
-		// Map<String, Object> map = new HashMap<String, Object>();
-		// map = mapper.readValue(data.toString(), new TypeReference<HashMap<String,
-		// Object>>() {
-		// });
-		// Assured p = (Assured) map.get("assured").getClass();
-		// System.out.println(map.get("assured").getClass());
-		// p.getAddress();
-		// System.out.println(p.getAddress());
 	}
 }

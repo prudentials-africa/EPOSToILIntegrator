@@ -31,7 +31,7 @@ public class EposToILTranslator {
 			m.marshal(CLICRPIREC, sw);
 
 			// String result = sw.toString();
-			System.out.println("STRING --------------------" + sw.toString());
+			System.out.println(sw.toString());
 			// Write to File
 			// m.marshal(emp, new File(FILE_NAME));
 
@@ -49,8 +49,9 @@ public class EposToILTranslator {
 		String s = EposToILTranslator.jaxbObjectToXML(clientMapper.createClientFromJson(assured));
 		return stubEnvelop(s);
 	}
+
 	private String stubEnvelop(String body) {
-		return new StringBuilder(EposToILConstants.SOAPENVELOP_HEADER)
-				.append(body).append(EposToILConstants.SOAPENVELOP_FOOTER).toString();
+		return new StringBuilder(EposToILConstants.SOAPENVELOP_HEADER).append(body)
+				.append(EposToILConstants.SOAPENVELOP_FOOTER).toString();
 	}
 }
