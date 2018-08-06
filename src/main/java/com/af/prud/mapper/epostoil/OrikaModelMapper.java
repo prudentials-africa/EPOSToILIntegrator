@@ -14,12 +14,12 @@ import ma.glasnost.orika.metadata.ClassMapBuilder;
  * 
  */
 @Component
-public class OrikaModelConverter implements ModelConverter {
+public class OrikaModelMapper implements ModelMapper {
 
 	private MapperFacade mapper;
 	MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-	public OrikaModelConverter() {
+	public OrikaModelMapper() {
 		
 	}
 

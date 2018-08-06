@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.af.prud.config", "com.af.prud.service", "com.af.prud.controller",
-		"com.af.prud.translator" })
+		"com.af.prud.translator","com.af.prud.mapper.epostoil" })
 public class Start {
 
 	public static void main(String[] args) {
