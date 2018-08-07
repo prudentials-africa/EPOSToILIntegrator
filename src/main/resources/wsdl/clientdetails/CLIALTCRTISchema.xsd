@@ -1,0 +1,83 @@
+<!--(C)Copyright 2015 Computer Sciences Corporation. All rights reserved.-->
+<xsd:schema targetNamespace="http://www.csc.smart/bo/schemas/CLIALTCRTI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mspc="http://www.csc.smart/msp/schemas/MSPContext">
+   <xsd:import namespace="http://www.csc.smart/msp/schemas/MSPContext" schemaLocation="MSPContext.xsd"/>
+   <xsd:element name="CLIALTCRTI_REC">
+      <xsd:annotation>
+         <xsd:documentation>******************************************************************
+			* Copyright 1986-2014, Computer Sciences Corporation.
+			******************************************************************
+			*           AMENDMENT  HISTORY
+			******************************************************************
+			* DATE.... VSN/MOD  WORK UNIT    BY....
+			**DD/MM/YY********************************************************</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="mspc:MSPContext" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="ADDRTYPE">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="1"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLTADDR01">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="30"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLTADDR02">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="30"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLTADDR03">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="30"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLTADDR04">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="30"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLTADDR05">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="30"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLTPCODE">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="10"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CTRYCODE">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="3"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CLNTNUM">
+               <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                     <xsd:maxLength value="8"/>
+                  </xsd:restriction>
+               </xsd:simpleType>
+            </xsd:element>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>
