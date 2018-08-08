@@ -20,7 +20,8 @@ public class ILRequesGeneratorController {
 	@RequestMapping(value = "/IL", method = RequestMethod.POST)
 	@ResponseBody
 	public String createILRequest(@RequestBody String json) {
+		String soapEnvelop =  ilServiceImpl.serviceRequest(json);
 		System.out.println(json);
-		return ilServiceImpl.serviceRequest(json);
+		return soapEnvelop;
 	}
 }
