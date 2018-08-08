@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.af.prud.constant.EposToILConstants;
 import com.af.prud.model.il.CLICRPIREC;
 
 import ma.glasnost.orika.MapperFacade;
@@ -24,7 +25,7 @@ public class OrikaModelMapper implements ModelMapper {
 	ConverterFactory converterFactory = mapperFactory.getConverterFactory();
 	
 	public OrikaModelMapper() {
-		converterFactory.registerConverter("createClientIdValue", new CreateClientCustomConverter());
+		converterFactory.registerConverter(EposToILConstants.CUSTOM_CONVERTER_ID, new CreateClientCustomConverter());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -36,7 +37,7 @@ public class OrikaModelMapper implements ModelMapper {
 				classMapBilder.field(s.getKey(),s.getValue());
 			}
 		}
-		classMapBilder.fieldMap("dateOfBirth","CLTDOBX").converter("createClientIdValue").add().byDefault().register();
+		classMapBilder.fieldMap(EposToILConstants.EPOS_FIELD_DATE_OF_BIRTH,EposToILConstants.IL_FIELD_CLTDOBX).converter(EposToILConstants.CUSTOM_CONVERTER_ID).add().byDefault().register();
 		mapper = mapperFactory.getMapperFacade();
 		return mapper.map(source, targetClass);
 	}
