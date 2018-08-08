@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--(C)Copyright 2018 DXC.technology. All rights reserved.-->
+<xsd:schema xmlns:mspc="http://www.csc.smart/msp/schemas/MSPContext" targetNamespace="http://www.csc.smart/bo/schemas/NBSENQI" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:import schemaLocation="MSPContext.xsd" namespace="http://www.csc.smart/msp/schemas/MSPContext"/>
+<xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NBSENQI_REC">
+<xsd:annotation>
+<xsd:documentation> * Copyright 1986-2015, Computer Sciences Corporation. ****************************************************************** ****************************************************************** * AMENDMENT HISTORY ****************************************************************** * DATE.... VSN/MOD WORK UNIT BY.... * 11/12/03 01/01 A07783 Warren Ornstein * Initial Version. * 23/02/15 01/01 A09278 Thomas Chan * Retrofit from PSI **DD/MM/YY******************************************************** </xsd:documentation>
+</xsd:annotation>
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="1" minOccurs="0" ref="mspc:MSPContext"/>
+<xsd:element name="CHDRNUM">
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

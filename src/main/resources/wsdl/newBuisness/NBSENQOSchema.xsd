@@ -1,0 +1,2163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--(C)Copyright 2018 DXC.technology. All rights reserved.-->
+<xsd:schema xmlns:boerr="http://www.csc.smart/bo/schemas/Error" targetNamespace="http://www.csc.smart/bo/schemas/NBSENQO" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:import schemaLocation="BOError.xsd" namespace="http://www.csc.smart/bo/schemas/Error"/>
+<xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NBSENQO_REC">
+<xsd:annotation>
+<xsd:documentation> * Copyright 1986-2015, Computer Sciences Corporation. * NAME OF COPY MEMBER * Description of what copy member is used for ****************************************************************** * AMENDMENT HISTORY ****************************************************************** * DATE.... VSN/MOD WORK UNIT BY.... * 08/01/04 01/01 A07783 Warren Ornstein * Original Version. ? * 23/01/04 01/01 UDW001 Lynne Dornan * Underwriting - Doctors and Questions added. * 08/07/04 01/01 D05GB1 Lynne Dornan * Various new fields added so that Proposal Enquiry * returns all of the fields required for a Proposal Modi * For Enhanced Error Handling additional ENTID's are * required for New Business - Proposal Create, Enquiry * and Modify. As Enquiry output is used as input to * and the Modify function, the Enquiry process must * generate the ENTID's. * Two fields added to Follow-up array, JLIFENO and * FUPTYPE. * 09/02/05 01/01 D05GB1 Steve Hale * The front end allows a maximum of 8 special terms for * one coverage and another 8 for a single rider. The * current maximum for both is set to 10. This must be * increased to 16. * The Lump sum amount is now included in the output for * coverages and riders. * 23/02/15 01/01 A09278 Thomas Chan * Retrofit form PSI **DD/MM/YY******************************************************** </xsd:documentation>
+</xsd:annotation>
+<xsd:complexType>
+<xsd:sequence>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="STATUS" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="MORE_IND" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="CONTRACT_HEADER_DETAILS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CONTRACT_HDR_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="AGNTSEL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="AGENTNAME">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="47"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BILLCD">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="BILLCURR">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BILLFREQ">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CAMPAIGN">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="6"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CHDRSEL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CHDRTYPE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CNTCURR">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DESPATCH_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DESPNUM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="INDXFLG">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="JOINT_OWNER_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="JOWNNUM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MOP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="OCCDATE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="OWNER_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="OWNERSEL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="PAYER_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="PAYRNUM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="PLANSUFF">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="REGISTER">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SRCEBUS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="STATCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DATIME">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="26"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="WARNING_ERORLINES" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="WARNING_ERORLINE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="78"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="BILLCD_IND">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SUSP_AMOUNT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="11"/>
+<xsd:fractionDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_LIVES">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_LIFE" maxOccurs="5">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="LIFE_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="LIFE_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="ANBAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DOB">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="OCCUP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SELECTION">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SEX">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SMOKING">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="HEIGHT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="WEIGHT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="9"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BMI">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="4"/>
+<xsd:fractionDigits value="1"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_JLIVES">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_JLIFE" maxOccurs="5">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="JOINT_LIFE_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="JOINT_LIFE_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="JOINT_LIFE_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="ANBAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DOBN262766">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="OCCUP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="RELATION">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SELECTION">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SEX">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SMOKING">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="HEIGHT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="WEIGHT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="9"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BMI">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="4"/>
+<xsd:fractionDigits value="1"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_COVERAGES">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_COVERAGE" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="COVERAGE_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVERAGE_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_CRTABLE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PAYRSEQNO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="1"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_MORTCLS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_POLINC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_NUMAPP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_CNTCURR">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_LIENCD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PCESSAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PCESSTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PCESSDTE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_RCESSAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_RCESSTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_RCESSDTE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_BCESSAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_BCESSTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_BCESSDTE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_SUMINS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="9"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_INSTPREM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="9"/>
+<xsd:fractionDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_SINGP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="13"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_LMPCNT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="13"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_RSUNIN">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_RESUNITS_DTE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_EFFDATE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_RIDERS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_RIDER" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="RIDER_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="RIDER_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_CRTABLE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PAYRSEQNO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="1"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_MORTCLS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_POLINC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_NUMAPP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_CNTCURR">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_LIENCD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PCESSAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PCESSTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_PCESSDTEN263407">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_RCESSAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_RCESSTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_RCESSDTEN263470">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_BCESSAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_BCESSTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_BCESSDTEN263533">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COVT_SUMINS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="9"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_INSTPREM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="9"/>
+<xsd:fractionDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_SINGP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="13"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_LMPCNT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="13"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COVT_EFFDATEN263619">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_BENEFICIARIES">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="BENEFICIARY_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="NBSENQO_BENEFICIARY" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="BENEFICIARY_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BNYPC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="5"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BNYRLN">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_FOLLOW_UPS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="FOLLOW_UPS_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="NBSENQO_FOLLOW_UP" maxOccurs="00012">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="FOLLOW_UP_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FUPCDE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FUPDT">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="FUPSTS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FUPNO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="LIFENO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="JLIFENO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FUPTYPE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_ASSIGNEES">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ASSIGNEE_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="NBSENQO_ASSIGNEE" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ASSIGNEE_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="COMMFROM">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="COMMTO">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="REASONCD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="SPECIAL_TERMS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_SPECIAL_TERM" maxOccurs="16">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="SPECIAL_TERM_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SPECIAL_TERM_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="AGERATE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="ECESTRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="INSPRM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="6"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="OPCDA">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="OPPC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="5"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="REASIND">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="SELECT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_COV_FUNDS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_COV_FUND" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="FUND_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FUND_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FNDSPL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="PRCAMTIND">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="NBSENQO_FUND" maxOccurs="10">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="VRTFND">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="UALPRC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="9"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="INTERATE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="4"/>
+<xsd:fractionDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MONTHS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="YRSINF">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="FROMDATE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="TODATE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_BANK_ACCOUNT">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="BANKACC_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKACC_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKACCDSC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKACOUNT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKKEY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CURRCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DATEFROM">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="FACTHOUS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_MANDATE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="MAND_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MAND_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MANDREF">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="5"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKACCKEY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKKEY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="EFFDATE">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="FACTHOUS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MANDSTAT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="TIMESUSE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CURRCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="BANKACCDSC">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_CLIENTS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_CLIENT" maxOccurs="20">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CLIENT_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLNTNUM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTTYPE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_INITIALS">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_ADDRTYPE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_BIRTHP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="20"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTADDR01">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTADDR02">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTADDR03">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTADDR04">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTADDR05">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTDOB">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CCYY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="4"/>
+<xsd:pattern value="((2[0-9][0-9][0-9])|(1[0-9][0-9][0-9])|9999|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[0-9])|(1[0-2])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:integer">
+<xsd:totalDigits value="2"/>
+<xsd:pattern value="(([0-9])|(0[1-9]|[1-2][0-9])|(3[0-1])|99|0)"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTPCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTPHONE01">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="16"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTPHONE02">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="16"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CLTSEX">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_CTRYCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_DIRMAIL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_DOCNO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_EMAIL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="50"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_ETHORIG">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_LANGUAGE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_GIVNAME">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="20"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_MAILING">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_MARRYD">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_MIDDL01">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="20"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_MIDDL02">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="20"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_NATLTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_OCCPCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_PREFCOM">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_SALUTL">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_SECUITYNO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="15"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_SOE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_STATCODE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_SURNAME">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_VIP">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="CLIENT_FAO">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_DOCTORS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_DOCTOR" maxOccurs="50">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="DOCTOR_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DOCTOR_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DOCTOR_PARTY">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="DOCTTYPE">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="NBSENQO_QUESTIONS">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NBSENQO_QUESTION" maxOccurs="400">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="QUESTION_ENTID">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="QUESTION_PARENT">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="ANSWER">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="QUESTIDF">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+<xsd:element minOccurs="1" maxOccurs="1" ref="boerr:ERROR"/>
+</xsd:choice>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

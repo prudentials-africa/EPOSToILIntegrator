@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--(C)Copyright 2018 DXC.technology. All rights reserved.-->
+<xsd:schema xmlns:boerr="http://www.csc.smart/bo/schemas/Error" targetNamespace="http://www.csc.smart/bo/schemas/NBSEXISTSO" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:import schemaLocation="BOError.xsd" namespace="http://www.csc.smart/bo/schemas/Error"/>
+<xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NBSEXISTSO_REC">
+<xsd:annotation>
+<xsd:documentation> * Copyright 1986-2015, Computer Sciences Corporation. ****************************************************************** ****************************************************************** * AMENDMENT HISTORY ****************************************************************** * DATE.... VSN/MOD WORK UNIT BY.... * 16/03/15 01/01 A09278 Thomas Chan * Retrofit from PSI **DD/MM/YY******************************************************** </xsd:documentation>
+</xsd:annotation>
+<xsd:complexType>
+<xsd:sequence>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="STATUS" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="MORE_IND" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element minOccurs="1" maxOccurs="1" ref="boerr:ERROR"/>
+</xsd:choice>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

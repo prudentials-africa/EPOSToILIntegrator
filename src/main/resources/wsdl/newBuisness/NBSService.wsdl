@@ -1,0 +1,100 @@
+<wsdl:definitions name="NBSService.wsdl" targetNamespace="http://www.csc.smart/bo/services/NBS" xmlns:m4rq="http://www.csc.smart/bo/schemas/NBSISSUEI" xmlns:m3rq="http://www.csc.smart/bo/schemas/NBSEXISTSI" xmlns:m3rs="http://www.csc.smart/bo/schemas/NBSEXISTSO" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.csc.smart/bo/services/NBS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:m1rs="http://www.csc.smart/bo/schemas/NBSCRTO" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:m2rq="http://www.csc.smart/bo/schemas/NBSENQI" xmlns:m2rs="http://www.csc.smart/bo/schemas/NBSENQO" xmlns:m1rq="http://www.csc.smart/bo/schemas/NBSCRTI" xmlns:m4rs="http://www.csc.smart/bo/schemas/NBSISSUEO">
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://www.csc.smart/bo/services/NBS">
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSCRTI" schemaLocation="NBSCRTISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSCRTO" schemaLocation="NBSCRTOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSENQI" schemaLocation="NBSENQISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSENQO" schemaLocation="NBSENQOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSEXISTSI" schemaLocation="NBSEXISTSISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSEXISTSO" schemaLocation="NBSEXISTSOSchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSISSUEI" schemaLocation="NBSISSUEISchema.xsd"/>
+         <xsd:import namespace="http://www.csc.smart/bo/schemas/NBSISSUEO" schemaLocation="NBSISSUEOSchema.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="NBSCRTResponse">
+      <wsdl:part name="NBSCRTRS" element="m1rs:NBSCRTO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSISSUERequest">
+      <wsdl:part name="NBSISSUERQ" element="m4rq:NBSISSUEI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSEXISTSResponse">
+      <wsdl:part name="NBSEXISTSRS" element="m3rs:NBSEXISTSO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSEXISTSRequest">
+      <wsdl:part name="NBSEXISTSRQ" element="m3rq:NBSEXISTSI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSCRTRequest">
+      <wsdl:part name="NBSCRTRQ" element="m1rq:NBSCRTI_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSISSUEResponse">
+      <wsdl:part name="NBSISSUERS" element="m4rs:NBSISSUEO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSENQResponse">
+      <wsdl:part name="NBSENQRS" element="m2rs:NBSENQO_REC"/>
+   </wsdl:message>
+   <wsdl:message name="NBSENQRequest">
+      <wsdl:part name="NBSENQRQ" element="m2rq:NBSENQI_REC"/>
+   </wsdl:message>
+   <wsdl:portType name="NBS">
+      <wsdl:operation name="NBSCRT">
+         <wsdl:input message="tns:NBSCRTRequest"/>
+         <wsdl:output message="tns:NBSCRTResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="NBSENQ">
+         <wsdl:input message="tns:NBSENQRequest"/>
+         <wsdl:output message="tns:NBSENQResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="NBSEXISTS">
+         <wsdl:input message="tns:NBSEXISTSRequest"/>
+         <wsdl:output message="tns:NBSEXISTSResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="NBSISSUE">
+         <wsdl:input message="tns:NBSISSUERequest"/>
+         <wsdl:output message="tns:NBSISSUEResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="NBSBinding" type="tns:NBS">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="NBSCRT">
+         <soap:operation soapAction="NBSCRTAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="NBSENQ">
+         <soap:operation soapAction="NBSENQAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="NBSEXISTS">
+         <soap:operation soapAction="NBSEXISTSAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="NBSISSUE">
+         <soap:operation soapAction="NBSISSUEAction"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="NBSService">
+      <wsdl:port name="NBSServicePort" binding="tns:NBSBinding">
+         <soap:address location="http://10.163.177.100:9081/LiFEWebServices/NBSService"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

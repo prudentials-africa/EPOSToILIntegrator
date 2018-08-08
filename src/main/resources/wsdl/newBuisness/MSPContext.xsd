@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema targetNamespace="http://www.csc.smart/msp/schemas/MSPContext" xmlns="http://www.csc.smart/msp/schemas/MSPContext" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!-- *************************************************************************************************************** Copyright 2011 - 2014, Computer Sciences Corporation. All rights reserved. Use of this product is subject to your license agreement. Warning: This computer program is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this program, or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law. *************************************************************************************************************** MSP Context Schema ================== This is an MSP Context structure that is included in the request message for Auto generated JAX-WS services. This allows for additional service information to be included in the request over and above what is auto generated from the Business object copybook. *************************************************************************************************************** * * Amendment History * ================== * * Date Vsn/Mod Work Unit By * * 01/11/2011 01/01 D12BST Steve Hale * Initial version. * *************************************************************************************************************** -->
+<xsd:element name="RequestParameter">
+<xsd:complexType>
+<xsd:attribute name="name" use="required" type="xsd:string"/>
+<xsd:attribute name="value" use="required" type="xsd:string"/>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="RequestParameters">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="RequestParameter" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="UserId">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="UserPassword">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:annotation>
+<xsd:documentation>The password can be encrypted or must be 1 - 10 in length</xsd:documentation>
+</xsd:annotation>
+<xsd:pattern value="(ENC\(.*\)|.{1,10})"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="MSPContext">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="UserId" minOccurs="0" maxOccurs="1"/>
+<xsd:element ref="UserPassword" minOccurs="0" maxOccurs="1"/>
+<xsd:element ref="RequestParameters" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

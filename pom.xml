@@ -78,7 +78,7 @@
 		</dependency>
 	</dependencies>
 
-	<build>
+	<!-- <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -95,7 +95,7 @@
 							<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/src/main/resources/wsdl/CLIService.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/resources/wsdl/newBuisness/NBSService.wsdl</wsdl>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
@@ -107,5 +107,5 @@
 			</plugin>
 
 		</plugins>
-	</build>
+	</build> -->
 </project>

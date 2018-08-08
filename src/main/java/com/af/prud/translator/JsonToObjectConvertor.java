@@ -15,7 +15,7 @@ public class JsonToObjectConvertor {
 
 	public Assured createObjectFromJson(String name, String eposJson) {
 		JSONParser parser = new JSONParser();
-		name = "assured";
+		// name = "assured";
 
 		// Object obj = parser.parse(new FileReader("input.json"));
 		FileReader fileReader;
@@ -23,8 +23,8 @@ public class JsonToObjectConvertor {
 		Assured assured = null;
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-//			fileReader = new FileReader("input.json");
-//			json = (JSONObject) parser.parse(fileReader);
+			// fileReader = new FileReader("input.json");
+			// json = (JSONObject) parser.parse(fileReader);
 			json = (JSONObject) parser.parse(eposJson);
 			assured = mapper.readValue(json.get(name).toString(), Assured.class);
 
