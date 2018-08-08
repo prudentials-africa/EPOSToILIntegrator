@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.af.prud.constant.EposToILConstants;
 import com.af.prud.model.il.CLICRPIREC;
 import com.af.prud.model.il.CLICRPIREC.CLTDOBX;
 
@@ -19,7 +20,7 @@ public class CreateClientCustomConverter extends CustomConverter<String, CLTDOBX
 		String s = source;
 		Date d = null;
 		try {
-			d = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").parse(s);
+			d = new SimpleDateFormat(EposToILConstants.CLTDOBX_FORMAT).parse(s);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

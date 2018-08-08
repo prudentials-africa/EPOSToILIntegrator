@@ -12,11 +12,13 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.springframework.stereotype.Component;
+
+import com.af.prud.constant.EposToILConstants;
 @Component
 public class XSLTransformer {
 	public String transform(String xslFileName, String source) {
 		String result = null;
-		String xslFile = getClass().getResource("/xsl/"+xslFileName).getFile();
+		String xslFile = getClass().getResource(EposToILConstants.FOLDERNAME_XSL+xslFileName).getFile();
 		try (StringReader reader = new StringReader(source); StringWriter writer = new StringWriter()) {
 
 			StreamSource xslCode = new StreamSource(new File(xslFile));
