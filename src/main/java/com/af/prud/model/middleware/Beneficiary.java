@@ -4,5 +4,5 @@ import java.util.List;
 
 public class Beneficiary {
 	private String beneficiaryId;
-	private List<BeneficiaryDetails> beneficiary;
+	private List<BeneficiaryDetails> beneficiaries;
 }
