@@ -13,30 +13,33 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.af.prud.constant.EposToILConstants;
-import com.af.prud.constant.ILServiceEnum;
+import com.af.prud.mapper.epostoil.ClientPopulator;
 import com.af.prud.mapper.epostoil.OrikaModelMapper;
 import com.af.prud.mapper.epostoil.XSLTransformer;
-import com.af.prud.model.epos.Assured;
 import com.af.prud.model.il.CLICRPIREC;
 import com.af.prud.model.il.MSPContext;
 import com.af.prud.model.il.RequestParameter;
 import com.af.prud.model.il.RequestParameters;
+import com.af.prud.model.middleware.ClientDetails;
 
 @Component
 public class EposToILTranslator {
-	
+
 	@Autowired
 	private XSLTransformer xslTransformer;
 	@Autowired
 	private OrikaModelMapper orikaModelConverter;
-	@Resource(name = "eposToILMappingProperty")
-	private Map<String, String> eposToILProperties;
+
+	@Autowired
+	private ClientPopulator clientPopulator;
+
+	@Resource(name = "clientMappingProperty")
+	private Map<String, String> clientMappingProperties;
 	@Value("${USER_NAME}")
-    private	String userId;
+	private String userId;
 
 	@Value("${PASSWORD}")
 	private String password;
-
 
 	static String jaxbObjectToXML(CLICRPIREC CLICRPIREC) {
 		StringWriter sw = null;
@@ -64,10 +67,13 @@ public class EposToILTranslator {
 	}
 
 	public String generateILRequest(String json) {
-		JsonToObjectConvertor jsonToObjectConvertor = new JsonToObjectConvertor();
-		Assured assured = jsonToObjectConvertor.createObjectFromJson(ILServiceEnum.CLIENT_CREATE.getServiceName(), json);
-		CLICRPIREC clientCreate = (CLICRPIREC) orikaModelConverter.map(assured, Assured.class, CLICRPIREC.class,
-				eposToILProperties);
+		// JsonToObjectConvertor jsonToObjectConvertor = new JsonToObjectConvertor();
+
+		ClientDetails clientDetails = clientPopulator.buildClient(json);
+		// jsonToObjectConvertor.createObjectFromJson(ILServiceEnum.CLIENT_CREATE.getServiceName(),
+		// json);
+		CLICRPIREC clientCreate = (CLICRPIREC) orikaModelConverter.map(clientDetails, ClientDetails.class,
+				CLICRPIREC.class, clientMappingProperties);
 		MSPContext mspContext = new MSPContext();
 		mspContext.setUserId(userId);
 		mspContext.setUserPassword(password);

@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 @Configuration
 public class PropertyBeanConfig {
-	@Bean(name = "eposToILMappingProperty")
+	@Bean(name = "clientMappingProperty")
 	public static PropertiesFactoryBean eposToILMappingProperty() {
 	        PropertiesFactoryBean bean = new PropertiesFactoryBean();
 	        bean.setLocation(new ClassPathResource(
-	                "epos-to-il-mapping.properties"));
+	                "client-to-il-mapping.properties"));
 	        return bean;
 	}
 }
