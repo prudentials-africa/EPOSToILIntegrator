@@ -3,8 +3,8 @@ package com.prud.mapper.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.prud.model.jpath.ClientJpathModel;
 import com.prud.model.middleware.ClientDetails;
-import com.prud.model.middleware.ClientJpathModel;
 import com.prud.translator.JsonValueExtractor;
 @Component
 public class ClientPopulator {
