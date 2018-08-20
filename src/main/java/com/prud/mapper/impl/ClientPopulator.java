@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.prud.model.middleware.ClientDetails;
-import com.prud.model.middleware.EposJpathModel;
+import com.prud.model.middleware.ClientJpathModel;
 import com.prud.translator.JsonValueExtractor;
 @Component
 public class ClientPopulator {
 	private JsonValueExtractor extractor;
 	@Autowired
-	private EposJpathModel eposJpathModel;
+	private ClientJpathModel eposJpathModel;
 
 	public ClientDetails buildClient(String content) {
 		extractor= new JsonValueExtractor(content);

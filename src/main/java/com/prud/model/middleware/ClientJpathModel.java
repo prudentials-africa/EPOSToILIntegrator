@@ -4,31 +4,31 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EposJpathModel {
+public class ClientJpathModel {
 
-	@Value("${birthPlace}")
+	@Value("${client.birthPlace}")
 	private String city;
-	@Value("${address}")
+	@Value("${client.address}")
 	private String address;
-	@Value("${zipcode}")
+	@Value("${client.zipcode}")
 	private String zipcode;
-	@Value("${phone}")
+	@Value("${client.phone}")
 	private String phone;
-	@Value("${gender}")
+	@Value("${client.gender}")
 	private String gender;
-	@Value("${countryCode}")
+	@Value("${client.countryCode}")
 	private String countryCode;
-	@Value("${firstName}")
+	@Value("${client.firstName}")
 	private String firstName;
-	@Value("${lastName}")
+	@Value("${client.lastName}")
 	private String lastName;
-	@Value("${civilStatus}")
+	@Value("${client.civilStatus}")
 	private String status;
-	@Value("${nationality}")
+	@Value("${client.nationality}")
 	private String nationality;
-	@Value("${occupationCode}")
+	@Value("${client.occupationCode}")
 	private String occupationCode;
-	@Value("${salutation}")
+	@Value("${client.salutation}")
 	private String salutation;
 
 	public String getCity() {
