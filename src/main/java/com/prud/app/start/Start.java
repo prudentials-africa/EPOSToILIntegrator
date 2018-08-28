@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.prud.config", "com.prud.service", "com.prud.translator", "com.prud.mapper.impl",
-		"com.prud.model.middleware" })
+		"com.prud.model.middleware","com.prud.model.jpath" })
 @PropertySource("classpath:epos-to-client-mapping.properties")
 public class Start {
 
